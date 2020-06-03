@@ -10,7 +10,7 @@ import (
 
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Println(r.RequestURI)
+		log.Println("middleware: ", r.RequestURI)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -21,7 +21,8 @@ func handlerHome(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/", handlerHome).Use(loggingMiddleware)
+	r.HandleFunc("/", handlerHome)
+	r.Use(loggingMiddleware)
 	http.Handle("/", r)
 
 	http.ListenAndServe(":8080", nil)

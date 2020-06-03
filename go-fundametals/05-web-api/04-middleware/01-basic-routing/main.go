@@ -8,8 +8,8 @@ import (
 
 func loggingMiddleware(fn func(http.ResponseWriter, *http.Request)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		log.Println(r.RequestURI)
-		fn(w, r, name)
+		log.Println("Middleware: ", r.RequestURI)
+		fn(w, r)
 	}
 }
 

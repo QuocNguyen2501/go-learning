@@ -22,6 +22,7 @@ func main() {
 	}
 
 	fmt.Println(customer)
+	fmt.Printf("%T\n", customer)
 	fmt.Println("Id: ", customer.Id)
 	fmt.Println("Name: ", customer.Name)
 	fmt.Println("Genre: ", customer.Genre)

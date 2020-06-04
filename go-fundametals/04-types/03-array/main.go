@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	// Create an array with 5 elements
@@ -39,7 +37,7 @@ func main() {
 	fmt.Println("Assign an array to another one")
 	arr4 := [5]string{"Will", "Bob", "Mary", "Join", "Smith"}
 	var arr5 [5]string
-	arr5 = arr4
+	arr5 = arr4 // they have different addresses
 	for i, v := range arr5 {
 		fmt.Printf("Index: %v , Value: %v\n", i, v)
 	}

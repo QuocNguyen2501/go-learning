@@ -62,22 +62,15 @@ func main() {
 		return
 	}
 
-	// for _, v := range users {
-	// 	create(db, v)
-	// }
-	// us := find(db, "Will")
-	// fmt.Println(us)
+	for _, v := range users {
+		create(db, v)
+	}
 
 	var usrs []User
 	db.Find(&usrs)
 	for _, v := range usrs {
 		fmt.Println(v)
 	}
-
-	// db.Model(&user).Update("name", "John")
-	// user = find(db, "John")
-	// fmt.Println(user)
-	// db.Where("age = ?", 20).Delete(&User{})
 	defer db.Close()
 	fmt.Println("Successful, shutdown program ...")
 }

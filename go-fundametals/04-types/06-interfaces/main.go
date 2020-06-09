@@ -2,51 +2,45 @@ package main
 
 import "fmt"
 
-type user struct {
-	Id        int
-	Firstname string
-	Lastname  string
-	Email     string
+type Engine interface {
+	Start()
+	Stop()
 }
 
-type IUserValidation interface {
-	validateInfo() bool
-	validateId() bool
+type CarEngine struct{}
+
+func (e CarEngine) Start() {
+	fmt.Println("Car engine is started")
 }
 
-func (u user) validateInfo() bool {
-	if u.Firstname == "" {
-		return false
-	}
-	if u.Lastname == "" {
-		return false
-	}
-	if u.Email == "" {
-		return false
-	}
-	return true
+func (e CarEngine) Stop() {
+	fmt.Println("Car engine is stopped")
 }
 
-func (u user) validateId() bool {
-	if u.Id == 0 {
-		return false
-	}
-	return true
+type TrainEngine struct{}
+
+func (e TrainEngine) Start() {
+	fmt.Println("Train engine is started")
 }
 
-func InputUser(userValidation IUserValidation) {
-	isValidInfo := userValidation.validateInfo()
-	fmt.Println("Validate user info: ", isValidInfo)
-	isValidID := userValidation.validateId()
-	fmt.Println("Validate user info: ", isValidID)
+func (e TrainEngine) Stop() {
+	fmt.Println("Train engine is stopped")
+}
+
+func Starting(e Engine) {
+	e.Start()
+}
+
+func Stopping(e Engine) {
+	e.Stop()
 }
 
 func main() {
-	u := user{
-		Id:        0,
-		Firstname: "Peter",
-		Lastname:  "Nguyen",
-		Email:     "peternguyen@gmail.com",
+	trainEngine := TrainEngine{}
+	carEngine := CarEngine{}
+	engines := []Engine{trainEngine, carEngine}
+	for _, e := range engines {
+		Starting(e)
+		Stopping(e)
 	}
-	InputUser(u)
 }

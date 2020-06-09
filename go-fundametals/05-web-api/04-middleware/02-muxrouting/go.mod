@@ -1,4 +1,4 @@
-module golearning.com/mux-middleware
+module github.com/QuocNguyen2501/go-learning/mux-middleware
 
 go 1.14
 

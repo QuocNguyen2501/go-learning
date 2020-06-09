@@ -1,4 +1,4 @@
-module golearning.com/mux-example
+module github.com/QuocNguyen2501/go-learning/mux-example
 
 go 1.14
 

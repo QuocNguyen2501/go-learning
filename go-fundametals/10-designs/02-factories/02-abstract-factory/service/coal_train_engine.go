@@ -9,3 +9,7 @@ func (c CoalTrainEngine) Assemble() string {
 func (c CoalTrainEngine) Capacity() int {
 	return 900000
 }
+
+func (s StreetCarEngine) Type() string {
+	return "COL-Sands"
+}

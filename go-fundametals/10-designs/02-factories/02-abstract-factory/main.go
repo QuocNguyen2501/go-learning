@@ -19,6 +19,14 @@ func execute(factoryType, engineType string) {
 	factory := bizsrvc.BuildFactory(factoryType)
 	engine := bizsrvc.DeliveringTheEngine(factory, engineType)
 	if engine != nil {
-		fmt.Printf("%s with capacity %d hp\n", engine.Assemble(), engine.Capacity())
+		carEngine, ok := engine.(service.CarEngine)
+		if ok {
+			fmt.Printf("%s with capacity %d hp and the model is %s\n", carEngine.Assemble(), carEngine.Capacity(), carEngine.Model())
+		}
+
+		trainEngine, ok := engine.(service.TrainEngine)
+		if ok {
+			fmt.Printf("%s with capacity %d hp and the type is %s\n", trainEngine.Assemble(), trainEngine.Capacity(), trainEngine.Type())
+		}
 	}
 }

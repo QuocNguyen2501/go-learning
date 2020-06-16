@@ -9,3 +9,7 @@ func (s SportCarEngine) Assemble() string {
 func (s SportCarEngine) Capacity() int {
 	return 10000
 }
+
+func (s SportCarEngine) Model() string {
+	return "Jet F1"
+}

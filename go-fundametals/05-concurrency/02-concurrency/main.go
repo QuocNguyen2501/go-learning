@@ -1,25 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"runtime"
-)
+import "fmt"
 
 func main(){
-	fmt.Println("Goroutines\t\t",runtime.NumGoroutine())
-	for i := 0; i < 10; i++ {
-		go bar(i)
-	}
-	for i := 0; i < 10; i++ {
-		go foo(i)
-	}
-	fmt.Println("Goroutines\t\t",runtime.NumGoroutine())
+	go f("goroutine")
+
+	f("direct")
+
+	go func(msg string){
+		fmt.Println(msg)
+	}("going")
+
+	fmt.Scanln()
 }
 
-func bar(i int){
-	fmt.Println(fmt.Sprintf(`bar %d`,i))
-}
-
-func foo(i int){
-	fmt.Println(fmt.Sprintf(`foo %d`,i))
+func f(from string){
+	for i := 0; i < 3; i++ {
+		fmt.Println(from, ":", i)
+	}
 }

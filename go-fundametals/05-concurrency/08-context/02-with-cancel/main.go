@@ -18,10 +18,11 @@ func main(){
 		for {
 			select {
 			case <- ctx.Done():
+				fmt.Println("done")
 				return
 			default:
 				n++
-				time.Sleep(time.Millisecond * 200)
+				time.Sleep(time.Millisecond * 300)
 				fmt.Println("working ",n)
 			}
 		}
@@ -35,8 +36,8 @@ func main(){
 	cancel()
 	fmt.Println("cancelled context")
 
-
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Second * 1)
 	fmt.Println("error check 3: ", ctx.Err())
 	fmt.Println("num goroutines 3: ",runtime.NumGoroutine())
 }
+

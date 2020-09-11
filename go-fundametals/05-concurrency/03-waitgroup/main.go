@@ -15,10 +15,6 @@ func main(){
 		wg.Add(1)
 		go bar(i,wg)
 	}
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go foo(i,wg)
-	}
 	fmt.Println("Goroutines\t\t",runtime.NumGoroutine())
 	wg.Wait()
 }
@@ -28,7 +24,3 @@ func bar(i int,wg *sync.WaitGroup){
 	wg.Done()
 }
 
-func foo(i int,wg *sync.WaitGroup){
-	fmt.Println(fmt.Sprintf(`foo %d`,i))
-	wg.Done()
-}

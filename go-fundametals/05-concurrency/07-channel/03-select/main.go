@@ -35,6 +35,9 @@ func receive(e, o, q <-chan int) {
 		case v := <-q:
 			fmt.Println("quit: ", v)
 			return
+		default:
+			fmt.Println("running...")
 		}
 	}
 }
+

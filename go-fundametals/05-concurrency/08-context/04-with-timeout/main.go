@@ -8,8 +8,8 @@ import (
 )
 
 func main(){
-	deadline := time.Now().Add(2*time.Second)
-	ctx, _ := context.WithDeadline(context.Background(),deadline)
+	deadline := time.Duration(2*time.Second)
+	ctx, _ := context.WithTimeout(context.Background(),deadline)
 
 	fmt.Println("error check 1: ", ctx.Err())
 	fmt.Println("num goroutines 1: ",runtime.NumGoroutine())
@@ -38,4 +38,5 @@ func main(){
 	fmt.Println("error check 3: ", ctx.Err())
 	fmt.Println("num goroutines 3: ",runtime.NumGoroutine())
 }
+
 
